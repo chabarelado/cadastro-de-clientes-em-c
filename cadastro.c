@@ -68,13 +68,12 @@ int main() {
                 printf("> Email:");
                 fgets(cadastrados[numero_de_clientes].nome, 100, stdin); 
                 scanf("%d", &cadastrados[numero_de_clientes].idade);
-
                 numero_de_clientes++;
             }
             break;
         case 3:
 
-        
+
             break;
 
         case 4:
