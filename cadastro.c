@@ -32,7 +32,9 @@ int main() {
             {
                 printf("\n> Digite uma opção válida de 1 a 5!\n");
             }
-    
+
+            while (getchar() != '\n' && getchar() != EOF);
+
         } while (opcao < 1 || opcao > 5);
 
         switch (opcao)
@@ -64,9 +66,10 @@ int main() {
             else {
                 printf("\n> Insira os dados do cliente.\n");
                 printf("> Nome:");
-                fgets(cadastrados[numero_de_clientes].nome, 100, stdin);
+                scanf(" %[^\n]s", cadastrados[numero_de_clientes].nome);
                 printf("> Email:");
-                fgets(cadastrados[numero_de_clientes].nome, 100, stdin); 
+                scanf(" %[^\n]s", cadastrados[numero_de_clientes].email);
+                printf("> Idade:");
                 scanf("%d", &cadastrados[numero_de_clientes].idade);
                 numero_de_clientes++;
             }
