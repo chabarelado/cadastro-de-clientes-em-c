@@ -120,6 +120,7 @@ int main() {
         case 4:
             char nome_alteracao[100];
             int cliente_encontrado2 = 0;
+            int confirmacao2 = 0;
 
             printf("\n> Insira o nome do cliente que deseja alterar:");
             scanf(" %[^\n]s", nome_alteracao);
@@ -130,16 +131,26 @@ int main() {
                 {
                     printf("\n> Cliente identificado.\n");
 
-                    printf("\n> Insira o novo nome:");
-                    scanf(" %[^\n]s", cadastrados[i].nome);
+                    printf("\n> Deseja realizar a alteração?\n> Digite 1 para confirmar e 0 para voltar ao menu:");
+                    scanf("%d",&confirmacao2);
 
-                    printf("> Insira o novo email:");
-                    scanf(" %[^\n]s", cadastrados[i]. email);
+                    if (confirmacao2 == 1)
+                    {
+                        printf("\n> Insira o novo nome:");
+                        scanf(" %[^\n]s", cadastrados[i].nome);
 
-                    printf("> Insira a idade atualizada:");
-                    scanf("%d", &cadastrados[i].idade);
+                        printf("> Insira o novo email:");
+                        scanf(" %[^\n]s", cadastrados[i]. email);
 
-                    cliente_encontrado2 = 1;
+                        printf("> Insira a idade atualizada:");
+                        scanf("%d", &cadastrados[i].idade);
+
+                        cliente_encontrado2 = 1;
+                    }
+                    else {
+                        continue;
+                        cliente_encontrado2 = 1;
+                    }
                 }   
             }
             
