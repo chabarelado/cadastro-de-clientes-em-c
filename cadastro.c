@@ -1,4 +1,5 @@
 #include <stdio.h> // Biblioteca padrão de entrada e saída de dados
+#include <string.h> // Biblioteca de maniúlação de strings
 
 // Estrutura de dados do cliente
 struct cliente
