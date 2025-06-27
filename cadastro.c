@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 struct cliente
 {
@@ -50,7 +51,7 @@ int main() {
                 for (int i = 0; i < numero_de_clientes; i++)
                 {
                     printf("\n------------------\n");
-                    printf("> Cliente número %d\n", i);
+                    printf("> Cliente número %d\n", i + 1);
                     printf("> Nome: %s\n", cadastrados[i].nome);
                     printf("> Email: %s\n", cadastrados[i].email);
                     printf("> Idade: %d\n", cadastrados[i].idade);
@@ -75,8 +76,32 @@ int main() {
             }
             break;
         case 3:
+            char nome[100];
+            int encontrado = 0;
 
+            printf("\n> Insira o nome do cliente que deseja excluir:");
+            scanf(" %[^\n]s", nome);
 
+            for (int i = 0; i < numero_de_clientes; i++)
+            {
+                if (strcmp(cadastrados[i].nome, nome) == 0)
+                {
+                    printf("> Cliente identificado.\n");
+                    for (int j = 0; j < numero_de_clientes - 1; j++)
+                    {
+                        cadastrados[j] = cadastrados[j + 1];
+                    }
+                    
+                    encontrado = 1;
+                    numero_de_clientes--;
+                    printf("> Cliente excluído com sucesso!\n");
+                }                
+            }
+
+            if (encontrado == 0)
+            {
+                printf("\n> Cliente não identificado no sistema.\n");
+            }
             break;
 
         case 4:
