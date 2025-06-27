@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h> // Biblioteca padrão de entrada e saída de dados
 
+// Estrutura de dados do cliente
 struct cliente
 {
     char nome[100];
@@ -8,16 +8,20 @@ struct cliente
     int idade;
 };
 
-typedef struct cliente cliente;
+typedef struct cliente cliente; // Renomeia a estrutura para cliente
 
+// Função principal
 int main() {
-    cliente cadastrados[100];
-    int numero_de_clientes = 0;
-    int opcao;
+    cliente cadastrados[100]; // Vetor que armazena ate 99 cliente
+    int numero_de_clientes = 0; // Variável que armazena o número de clientes cadastrados
+    int opcao; // Variável que armazena a opção escolhida no menu
     
     printf("\n> Sistema de cadastro\n");
+
+    // Laço de repetição para que o programa continue em execução
     do
     {
+        // Menu de opções com validação de entrada
         do
         {
             printf("\n> Selecione uma opção abaixo:\n");
@@ -34,14 +38,16 @@ int main() {
                 printf("\n> Digite uma opção válida de 1 a 5!\n");
             }
 
+            // Limpa a memoria volátil para evitar erros na entrada de dados
             while (getchar() != '\n' && getchar() != EOF);
 
         } while (opcao < 1 || opcao > 5);
 
+        // Estrutura de opções do Menu
         switch (opcao)
         {
         case 1:
-
+            // Exibe os clientes cadastrados 
             if (numero_de_clientes == 0)
             {
                 printf("\n> Nenhum cadastro identificado.\n");
@@ -59,6 +65,7 @@ int main() {
             }
             break;
         case 2:
+            // Cadastra novos clientes
             if (numero_de_clientes >= 100)
             {
                 printf("\n> Atenção!!! Número máximo de clientes cadastrados!!!\n");
@@ -78,10 +85,12 @@ int main() {
             }
             break;
         case 3:
-            char nome[100];
-            int cliente_encontrado = 0;
-            int confirmacao = 0;
+            // Excluí clientes do cadastro
+            char nome[100]; // Variável que armazena o nome do cliente a ser excluído
+            int cliente_encontrado = 0; // Variável  utlizada para informar se o cliente foi identificado
+            int confirmacao = 0; // Variável de confirmação de exclusão
 
+            // Confirmação da exclusão
             printf("\n> Insira o nome do cliente que deseja excluir:");
             scanf(" %[^\n]s", nome);
 
@@ -107,7 +116,6 @@ int main() {
                     }
                     else {
                         cliente_encontrado = 1;
-                        continue;
                     }
                 }                
             }
@@ -118,10 +126,12 @@ int main() {
             }
             break;      
         case 4:
-            char nome_alteracao[100];
-            int cliente_encontrado2 = 0;
-            int confirmacao2 = 0;
+            // Alteração do cadastro
+            char nome_alteracao[100]; // Variável que armazena o nome do cliente a ser excluído
+            int cliente_encontrado2 = 0;  // Variável  utlizada para informar se o cliente foi identificado
+            int confirmacao2 = 0;  // Variável de confirmação de exclusão
 
+            // Confirmação de alteração
             printf("\n> Insira o nome do cliente que deseja alterar:");
             scanf(" %[^\n]s", nome_alteracao);
 
@@ -148,7 +158,6 @@ int main() {
                         cliente_encontrado2 = 1;
                     }
                     else {
-                        continue;
                         cliente_encontrado2 = 1;
                     }
                 }   
@@ -163,6 +172,7 @@ int main() {
             }
             break;
         case 5:
+            // Finalizando o programa.
             printf("\n> Encerrando o programa...");
             break;
         default:
