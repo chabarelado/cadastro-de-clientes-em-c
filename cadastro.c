@@ -73,11 +73,14 @@ int main() {
                 printf("> Idade:");
                 scanf("%d", &cadastrados[numero_de_clientes].idade);
                 numero_de_clientes++;
+
+                printf("\n> Cliente cadastrado com sucesso.\n");
             }
             break;
         case 3:
             char nome[100];
-            int encontrado = 0;
+            int cliente_encontrado = 0;
+            int confirmacao = 0;
 
             printf("\n> Insira o nome do cliente que deseja excluir:");
             scanf(" %[^\n]s", nome);
@@ -86,28 +89,73 @@ int main() {
             {
                 if (strcmp(cadastrados[i].nome, nome) == 0)
                 {
-                    printf("> Cliente identificado.\n");
-                    for (int j = 0; j < numero_de_clientes - 1; j++)
+                    printf("\n> Cliente identificado <\n");
+
+                    printf("\n> Deseja realizar a exclusão?\n> Digite 1 para confirmar e 0 para voltar ao menu:");
+                    scanf("%d",&confirmacao);
+
+                    if (confirmacao == 1)
                     {
-                        cadastrados[j] = cadastrados[j + 1];
+                        for (int j = 0; j < numero_de_clientes - 1; j++)
+                        {
+                            cadastrados[j] = cadastrados[j + 1];
+                        }
+                        
+                        cliente_encontrado = 1;
+                        numero_de_clientes--;
+                        printf("\n> Cliente excluído com sucesso! <\n");
                     }
-                    
-                    encontrado = 1;
-                    numero_de_clientes--;
-                    printf("> Cliente excluído com sucesso!\n");
+                    else {
+                        cliente_encontrado = 1;
+                        continue;
+                    }
                 }                
             }
 
-            if (encontrado == 0)
+            if (cliente_encontrado == 0)
             {
+                printf("\n> Cliente não identificado no sistema. <\n");
+            }
+            break;      
+        case 4:
+            char nome_alteracao[100];
+            int cliente_encontrado2 = 0;
+
+            printf("\n> Insira o nome do cliente que deseja alterar:");
+            scanf(" %[^\n]s", nome_alteracao);
+
+            for (int i = 0; i < numero_de_clientes; i++)
+            {
+                if (strcmp(cadastrados[i].nome, nome_alteracao) == 0)
+                {
+                    printf("\n> Cliente identificado.\n");
+
+                    printf("\n> Insira o novo nome:");
+                    scanf(" %[^\n]s", cadastrados[i].nome);
+
+                    printf("> Insira o novo email:");
+                    scanf(" %[^\n]s", cadastrados[i]. email);
+
+                    printf("> Insira a idade atualizada:");
+                    scanf("%d", &cadastrados[i].idade);
+
+                    cliente_encontrado2 = 1;
+                }   
+            }
+            
+            if (cliente_encontrado2 == 1) {
+                printf("\n> Cadastro atualizado com sucesso.\n");
+            } 
+
+            else {
                 printf("\n> Cliente não identificado no sistema.\n");
             }
             break;
-
-        case 4:
-
+        case 5:
+            printf("\n> Encerrando o programa...");
             break;
         default:
+            printf("\n> Digite uma opção válida!!!");
             break;
         }
 
